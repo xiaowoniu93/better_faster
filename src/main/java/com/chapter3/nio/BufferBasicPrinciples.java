@@ -1,7 +1,6 @@
 package com.chapter3.nio;
 
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * buffer 基础原理：属性capacity、position、limit的含义
@@ -23,7 +22,11 @@ public class BufferBasicPrinciples {
 			byteBuffer.get();
 		}
 		System.out.println("第四次：capacity="+byteBuffer.capacity()+", position="+byteBuffer.position()+", limit="+byteBuffer.limit()); // 15、5、10
+		byteBuffer.flip();
+		System.out.println("第五次：capacity="+byteBuffer.capacity()+", position="+byteBuffer.position()+", limit="+byteBuffer.limit()); // 15、0、5
 		byteBuffer.clear();
-		System.out.println("第五次：capacity="+byteBuffer.capacity()+", position="+byteBuffer.position()+", limit="+byteBuffer.limit()); // 15、0、15
+		System.out.println("第六次：capacity="+byteBuffer.capacity()+", position="+byteBuffer.position()+", limit="+byteBuffer.limit()); // 15、0、15
+		byte[] originByte = new byte[]{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t'};
+		byteBuffer.put(originByte); // java.nio.BufferOverflowException
 	}
 }
